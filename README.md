@@ -1,6 +1,6 @@
 # CFZ-Net-training
 
-Deep Learning for capillary free zones (CFZ) Segmentation using OCTA images. The implementation is using Python and Pytorch.
+Deep Learning for Capillary Free Zones (CFZ) Segmentation using OCTA Images. The implementation uses Python and PyTorch.
 
 
 Overview
@@ -15,9 +15,9 @@ Key Features:
     Evaluation metrics for assessing segmentation performance
 
 
-Images were acquired using the AngioVue SD-OCT device (Optovue, Fremont, CA, USA). The OCT system had a 70,000 Hz A-scan rate with ~5 μm axial and ~15 μm lateral resolutions. All OCTA images used for this study were 6 mm × 6 mm scans; only superficial OCTA images were used. 
+Images were acquired using the AngioVue SD-OCT device (Optovue, Fremont, CA, USA). The OCT system had a 70,000 Hz A-scan rate with ~5 μm axial and ~15 μm lateral resolutions. All OCTA images used for this study were 6 mm × 6 mm scans; only superficial OCTA images were used.
 
-These figures show two representative OCTA images and corresponding manually generated ground truths and predicred images.
+These figures show two representative OCTA images and corresponding manually generated ground truths and predicted images:
 ![The CFZ-Net](https://github.com/mansour2002/CFZ-Net-training/blob/main/Figures/CFZ%20Segmentation%201.png?raw=true)
 
 
