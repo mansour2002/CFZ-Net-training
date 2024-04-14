@@ -30,7 +30,4 @@ Dependencies
 - CUDA >= 11.8
 - Python >= 3.9
 
-Citations
-------------
-Mansour Abtahi, David Le, Behrouz Ebrahimi, Albert K. Dadzie, Jennifer I. Lim & Xincheng Yao, "An open-source deep learning network AVA-Net for arterial-venous area segmentation in optical coherence tomography angiography". Communications Medicine, 3, 54 (2023). https://doi.org/10.1038/s43856-023-00287-9
 
