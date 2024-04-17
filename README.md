@@ -9,10 +9,10 @@ This GitHub repository hosts the implementation of CFZ-Net, a deep learning mode
 
 Key Features:
 
-    Utilizes PyTorch framework for efficient training and inference
-    Designed specifically for segmenting CFZ, arteries, and veins in OCTA images
-    Preprocessing scripts for data augmentation and preparation
-    Evaluation metrics for assessing segmentation performance
+- Utilizes PyTorch framework for efficient training and inference
+- Designed specifically for segmenting CFZ, arteries, and veins in OCTA images
+- Preprocessing scripts for data augmentation and preparation
+- Evaluation metrics for assessing segmentation performance
 
 
 Images were acquired using the AngioVue SD-OCT device (Optovue, Fremont, CA, USA). The OCT system had a 70,000 Hz A-scan rate with ~5 μm axial and ~15 μm lateral resolutions. All OCTA images used for this study were 6 mm × 6 mm scans; only superficial OCTA images were used.
