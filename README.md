@@ -40,7 +40,7 @@ CFZ-Net-training/
 ├── figures/            # Directory for project figures and visualizations
 │   └── (e.g., CFZ Segmentation 1.png)
 ├── notebooks/          # Original Jupyter notebooks
-│   └── CFZ-Net(1).ipynb
+│   └── CFZ-Net.ipynb
 ├── requirements.txt    # Python dependencies
 └── README.md           # Project README file
 ```
