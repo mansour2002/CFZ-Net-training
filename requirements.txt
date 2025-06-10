@@ -1,0 +1,10 @@
+torch>=2.2.1+cu118
+torchvision
+torchmetrics
+segmentation_models_pytorch
+albumentations
+opencv-python
+numpy
+pandas
+Pillow
+matplotlib
