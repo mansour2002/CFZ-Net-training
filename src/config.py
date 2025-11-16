@@ -3,20 +3,21 @@
 import os
 
 # Base directory for the project
-PARENT_DIR = 'D:\\AV Project\\CFZ-Net'  # IMPORTANT: Update this path to your project root
+# IMPORTANT: Update this path to your project root
+PARENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Folder to save models, logs, and other outputs
-SAVE_FOLDER_NAME = "CFZ_segmentation_V5T02"
+SAVE_FOLDER_NAME = "models"
 SAVE_PATH = os.path.join(PARENT_DIR, SAVE_FOLDER_NAME)
 
 # DataFrame CSV file name
 DATAFRAME_NAME = 'train_data_tmp_Idea61CFZ.csv'
 
 # Project-specific paths
-PROJECT_PATH = os.path.join(PARENT_DIR, 'tmp_Idea61CFZ')
-DATASET_PATH = os.path.join(PROJECT_PATH, 'Dataset')
-TRAIN_INPUT_PATH = os.path.join(DATASET_PATH, 'train/Input')
-TRAIN_OUTPUT_PATH = os.path.join(DATASET_PATH, 'train/CFZ_map')
+PROJECT_PATH = os.path.join(PARENT_DIR, 'data')
+DATASET_PATH = PROJECT_PATH
+TRAIN_INPUT_PATH = os.path.join(DATASET_PATH, 'train', 'Input')
+TRAIN_OUTPUT_PATH = os.path.join(DATASET_PATH, 'train', 'CFZ_map')
 
 # Image size for resizing
 IMAGE_SIZE = 320
@@ -32,7 +33,8 @@ FOLDS = 5 # Total number of folds for cross-validation (if used)
 CURRENT_FOLD = 1 # Current fold number (if using a specific fold)
 
 # Source directory for raw data (if data transfer is needed)
-SOURCE_DATA_DIR = "D:\\AV Project\\Dataset6x6mm\\"
+# IMPORTANT: Update this path to your raw data location
+SOURCE_DATA_DIR = os.path.join(PARENT_DIR, 'raw_data')
 
 # Ensure directories exist
 def create_directories():

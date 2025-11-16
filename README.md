@@ -69,12 +69,17 @@ CFZ-Net-training/
 
 ### 1. Data Preparation
 
-* **Update `config.py`**:
-    * Set `PARENT_DIR` to the root directory where you cloned this project.
-    * Set `SOURCE_DATA_DIR` to the path where your raw 6x6mm OCTA images are located.
+* **Update `config.py`** (if needed):
+    * `PARENT_DIR` is automatically set to the repository root directory.
+    * Set `SOURCE_DATA_DIR` to the path where your raw 6x6mm OCTA images are located (if you need to process raw data).
 
 * **Run data transfer (if necessary)**:
-    The `utils.transfer_data` function in `utils.py` will read your raw data, resize it, normalize OCTA images, create a 3-channel OCTA image, and save them to the `data/Dataset/train/Input` and `data/Dataset/train/CFZ_map` directories. It will also create a CSV file (`train_data_tmp_Idea61CFZ.csv`) mapping input to output images. This function is commented out by default in `train.py` and `predict.py` because it only needs to be run once. Uncomment it in `train.py` and run `python src/train.py` once if you haven't processed your data yet.
+    The `utils.transfer_data` function in `utils.py` will read your raw data, resize it, normalize OCTA images, create a 3-channel OCTA image, and save them to the `data/train/Input` and `data/train/CFZ_map` directories. It will also create a CSV file (`train_data_tmp_Idea61CFZ.csv`) mapping input to output images. This function is commented out by default in `train.py` because it only needs to be run once.
+
+    To process raw data:
+    1. Update `SOURCE_DATA_DIR` in `config.py` to point to your raw data location
+    2. Uncomment the data transfer section in `src/train.py` (lines 124-131)
+    3. Run `python src/train.py` once
 
 ### 2. Training the Model
 
@@ -82,8 +87,8 @@ To train the CFZ-Net model, run:
 ```bash
 python src/train.py
 ```
-* You can adjust training parameters (e.g., `BATCH_SIZE`, `NUM_EPOCHS`, `CURRENT_FOLD`) in `src/config.py`.
-* The best model weights (based on validation loss) will be saved in the `models/` directory.
+* You can adjust training parameters (e.g., `BATCH_SIZE`, `CURRENT_FOLD`, `NUM_EPOCHS` in the train.py file) in [src/config.py](src/config.py).
+* The best model weights (based on validation loss) will be saved in the `models/` directory as `best_model.pth`.
 
 ### 3. Making Predictions
 
@@ -91,24 +96,25 @@ To perform inference on a single image, run:
 ```bash
 python src/predict.py
 ```
-* **Update `predict.py`**:
-    * Change `test_image_path` to the actual path of the image you want to segment.
-* The script will load the best-trained model and save the predicted segmentation mask to the `models/` directory.
+* **Before running**:
+    * Update `test_image_path` in [src/predict.py](src/predict.py) (line 68) to the actual path of the image you want to segment.
+    * Ensure you have a trained model at `models/best_model.pth`.
+* The script will load the best-trained model and save the predicted segmentation mask to the `models/` directory as `predicted_mask.png`.
 
 ## Dependencies
 
-* PyTorch >= 2.2.1+cu118
-* CUDA >= 11.8 (for GPU acceleration)
 * Python >= 3.9
-* `torchvision`
-* `torchmetrics`
-* `segmentation_models_pytorch`
-* `albumentations`
-* `opencv-python`
-* `numpy`
-* `pandas`
-* `Pillow`
-* `matplotlib`
+* PyTorch >= 2.2.1
+* CUDA >= 11.8 (for GPU acceleration, optional)
+* torchvision >= 0.17.0
+* torchmetrics >= 1.0.0
+* segmentation-models-pytorch >= 0.3.0
+* albumentations >= 1.3.0
+* opencv-python >= 4.8.0
+* numpy >= 1.24.0
+* pandas >= 2.0.0
+* Pillow >= 10.0.0
+* matplotlib >= 3.7.0
 
-Please refer to `requirements.txt` for the exact versions.
+Please refer to [requirements.txt](requirements.txt) for the complete list of dependencies.
 

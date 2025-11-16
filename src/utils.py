@@ -5,7 +5,6 @@ import torch
 import cv2
 import numpy as np
 import pandas as pd
-from shutil import copyfile
 
 import config
 
@@ -53,11 +52,19 @@ def transfer_data(source_dir, destination_dir, image_size, dataframe_name, paren
     Creates a CSV file with input/output paths."""
     files = []
     # Create necessary subdirectories if they don't exist
-    os.makedirs(os.path.join(destination_dir, 'train/Input'), exist_ok=True)
-    os.makedirs(os.path.join(destination_dir, 'train/CFZ_map'), exist_ok=True)
+    os.makedirs(os.path.join(destination_dir, 'train', 'Input'), exist_ok=True)
+    os.makedirs(os.path.join(destination_dir, 'train', 'CFZ_map'), exist_ok=True)
+
+    if not os.path.exists(source_dir):
+        print(f"Warning: Source directory not found: {source_dir}")
+        print("Please update SOURCE_DATA_DIR in config.py to your raw data location")
+        return []
 
     for subfolder in os.listdir(source_dir):
         subfolder_path = os.path.join(source_dir, subfolder)
+        if not os.path.isdir(subfolder_path):
+            continue
+
         ava_map_path = os.path.join(subfolder_path, 'AVA_map')
         octa_path = os.path.join(subfolder_path, 'OCTA')
 
@@ -80,8 +87,8 @@ def transfer_data(source_dir, destination_dir, image_size, dataframe_name, paren
 
                     # Define the destination paths
                     output_png_filename = base_filename + '.png'
-                    destination_input = os.path.join(destination_dir, 'train/Input', output_png_filename)
-                    destination_output = os.path.join(destination_dir, 'train/CFZ_map', output_png_filename)
+                    destination_input = os.path.join(destination_dir, 'train', 'Input', output_png_filename)
+                    destination_output = os.path.join(destination_dir, 'train', 'CFZ_map', output_png_filename)
 
                     # Read and resize the OCTA and CFZ map images
                     im_octa = cv2.imread(file_octa, cv2.IMREAD_GRAYSCALE)
